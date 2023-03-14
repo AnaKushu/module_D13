@@ -182,3 +182,9 @@ EMAIL_SUBJECT_PREFIX = 'Новостной портал: '
 ADMINS = (
     ('Anna', 'ana.rewv@yandex.ru'),
 )
+
+CELERY_BROKER_URL = 'redis://default:Mwfdue2eUMmZgLl0wfzyiRqjw2QOnSL5@redis-12721.c240.us-east-1-3.ec2.cloud.redislabs.com:12721'
+CELERY_RESULT_BACKEND = 'redis://default:Mwfdue2eUMmZgLl0wfzyiRqjw2QOnSL5@redis-12721.c240.us-east-1-3.ec2.cloud.redislabs.com:12721'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
