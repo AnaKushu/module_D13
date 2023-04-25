@@ -1,0 +1,80 @@
+2023-04-25 22:11:55,495 ERROR Internal Server Error: /news/ 
+/home/anastasia/.local/lib/python3.10/site-packages/django/utils/log.py 
+(<class 'django.template.exceptions.TemplateDoesNotExist'>, TemplateDoesNotExist('new.html, news/post_list.html'), <traceback object at 0x7f1c6b386800>)
+Traceback (most recent call last):
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/response.py", line 111, in render
+    self.content = self.rendered_content
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/response.py", line 87, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/response.py", line 69, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: new.html, news/post_list.html
+2023-04-25 22:11:56,373 ERROR "GET /news/ HTTP/1.1" 500 93631 
+/home/anastasia/.local/lib/python3.10/site-packages/django/core/servers/basehttp.py 
+None
+2023-04-25 22:13:03,997 ERROR Internal Server Error: /news/32 
+/home/anastasia/.local/lib/python3.10/site-packages/django/utils/log.py 
+(<class 'django.template.exceptions.TemplateDoesNotExist'>, TemplateDoesNotExist('posts.html'), <traceback object at 0x7fcd89a4c340>)
+Traceback (most recent call last):
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/response.py", line 111, in render
+    self.content = self.rendered_content
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/response.py", line 87, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/response.py", line 69, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: posts.html
+2023-04-25 22:13:04,471 ERROR "GET /news/32 HTTP/1.1" 500 91286 
+/home/anastasia/.local/lib/python3.10/site-packages/django/core/servers/basehttp.py 
+None
+2023-04-25 22:15:00,993 ERROR Internal Server Error: /news/32/update/ 
+/home/anastasia/.local/lib/python3.10/site-packages/django/utils/log.py 
+(<class 'django.template.exceptions.TemplateDoesNotExist'>, TemplateDoesNotExist('post_edits.html'), <traceback object at 0x7f6a3fc932c0>)
+Traceback (most recent call last):
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/response.py", line 111, in render
+    self.content = self.rendered_content
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/response.py", line 87, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/response.py", line 69, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edits.html
+2023-04-25 22:15:01,622 ERROR "GET /news/32/update/ HTTP/1.1" 500 91233 
+/home/anastasia/.local/lib/python3.10/site-packages/django/core/servers/basehttp.py 
+None
+2023-04-25 22:54:06,446 ERROR Internal Server Error: /news/ 
+/home/anastasia/.local/lib/python3.10/site-packages/django/utils/log.py 
+(<class 'django.template.exceptions.TemplateDoesNotExist'>, TemplateDoesNotExist('new.html, news/post_list.html'), <traceback object at 0x7f855d2b8f00>)
+Traceback (most recent call last):
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/response.py", line 111, in render
+    self.content = self.rendered_content
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/response.py", line 87, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/response.py", line 69, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/anastasia/.local/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: new.html, news/post_list.html
+2023-04-25 22:54:07,038 ERROR "GET /news/ HTTP/1.1" 500 93260 
+/home/anastasia/.local/lib/python3.10/site-packages/django/core/servers/basehttp.py 
+None
