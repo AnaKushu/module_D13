@@ -151,7 +151,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
 ACCOUNT_FORMS = {"signup": "accounts.forms.CustomSignupForm"}
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
@@ -183,8 +183,129 @@ ADMINS = (
     ('Anna', 'ana.rewv@yandex.ru'),
 )
 
-CELERY_BROKER_URL = 'redis://default:Mwfdue2eUMmZgLl0wfzyiRqjw2QOnSL5@redis-12721.c240.us-east-1-3.ec2.cloud.redislabs.com:12721'
-CELERY_RESULT_BACKEND = 'redis://default:Mwfdue2eUMmZgLl0wfzyiRqjw2QOnSL5@redis-12721.c240.us-east-1-3.ec2.cloud.redislabs.com:12721'
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'general'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['warning', 'error', 'mistakes', 'mail_admins'],
+            'level': 'WARNING',
+            'propagate': False,
+        },
+        'django.server': {
+            'handlers': ['mistakes', 'mail_admins'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django.template': {
+            'handlers': ['mistakes'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django.db.backends': {
+            'handlers': ['mistakes'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django.security': {
+            'handlers': ['warning', 'error', 'security'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'filters': ['require_debug_true'],
+            'formatter': 'myform'
+        },
+        'warning': {
+            'level': 'WARNING',
+            'class': 'logging.StreamHandler',
+            'filters': ['require_debug_true', 'filter_warning_level'],
+            'formatter': 'myform_warning'
+        },
+        'error': {
+            'level': 'ERROR',
+            'class': 'logging.StreamHandler',
+            'filters': ['require_debug_true', 'filter_error_level'],
+            'formatter': 'myform_error'
+        },
+        'general': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': './logs/general.log',
+            'filters': ['require_debug_false'],
+            'formatter': 'general'
+        },
+        'mistakes': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': './logs/errors.log',
+            'formatter': 'myform_error'
+        },
+        'security': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': './logs/security.log',
+            'formatter': 'general'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'filters': ['require_debug_false'],
+            'formatter': 'myform_warning'
+        },
+    },
+    'formatters': {
+        'myform': {
+            'format': '{asctime} {levelname} {message}',
+            'datetime': '%Y-%m-%d %H:%M:%S',
+            'style': '{',
+        },
+        'myform_warning': {
+            'format': '{asctime} {levelname} {message} \n{pathname}',
+            'datetime': '%Y-%m-%d %H:%M:%S',
+            'style': '{',
+        },
+        'myform_error': {
+            'format': '{asctime} {levelname} {message} \n{pathname} \n{exc_info}',
+            'datetime': '%Y-%m-%d %H:%M:%S',
+            'style': '{',
+        },
+        'general': {
+            'format': '{asctime} {levelname} {module} {message}',
+            'datetime': '%Y-%m-%d %H:%M:%S',
+            'style': '{',
+        },
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'filter_warning_level': {
+            '()': 'logs.logs.FilterLevels',
+            'filter_levels': ['WARNING']
+        },
+        'filter_error_level': {
+            '()': 'logs.logs.FilterLevels',
+            'filter_levels': ['ERROR', 'CRITICAL']
+        },
+    },
+}
